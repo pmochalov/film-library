@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    h1 {
+        @apply text-red-600;
+    }
+
+    body {
+        @apply bg-slate-500
+    }
+}
+
+@layer components {
+    /* .card {
+        background-color: theme('colors.white');
+        border-radius: theme('borderRadius.lg');
+        padding: theme('spacing.6');
+        box-shadow: theme('boxShadow.xl');
+    } */
+
+    .nav-item {
+        @apply p-3 bg-slate-400;
+    }
+}
