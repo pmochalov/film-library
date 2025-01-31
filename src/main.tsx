@@ -11,6 +11,10 @@ import {
 } from "react-router-dom";
 import { Film } from "./pages/Film.tsx";
 
+import { store } from "./app/store.ts";
+
+import { Provider } from "react-redux";
+
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route
@@ -28,7 +32,7 @@ const router = createBrowserRouter(
 );
 
 createRoot(document.getElementById("root")!).render(
-    <StrictMode>
+    <Provider store={store}>
         <RouterProvider router={router} />
-    </StrictMode>
+    </Provider>
 );

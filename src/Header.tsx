@@ -18,7 +18,7 @@ const Logo: React.FC = () => {
             to='/'
             className='px-3 py-1 text-xl text-white rounded-lg md:text-2xl lg:text-3xl box-decoration-slice bg-gradient-to-r from-indigo-600 to-pink-500'
         >
-            КИНОПИСК
+            КИНОПиСК
         </Link>
     );
 };
