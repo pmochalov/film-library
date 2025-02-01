@@ -5,6 +5,8 @@ import { RootState } from "../app/store";
 import { fetchFilm, resetFilmState } from "../features/film/filmSlice";
 import { useAppDispatch, useAppSelector } from "../hooks";
 import { Genre } from "../@types";
+import { H1 } from "../UI/H1";
+import { H2 } from "../UI/H2";
 
 type GenresProps = {
     items: Genre[] | null;
@@ -58,17 +60,29 @@ const Film: React.FC = () => {
 
     return (
         <>
-            <h1>{data.nameRu}</h1>
-
-            {data.genres && (
-                <>
-                    <Genres items={data.genres} />
-                </>
-            )}
+            <H1 title={data.nameRu} />
 
             <div>
-                <img src={data.posterUrl} />
+                <span>Год: {data.year}</span>
+                <span>Рейтинг: {data.ratingKinopoisk}</span>
             </div>
+
+            {data.genres && <Genres items={data.genres} />}
+
+            <div className='grid gap-2 md:gap-4 grid-cols-1fr md:grid-cols-[400px_1fr]'>
+                <div className='bg-slate-300'>
+                    <img
+                        src={data.posterUrl}
+                        className='w-56 h-auto md:w-auto md:h-auto'
+                    />
+                </div>
+                <div>
+                    <H2 title={"О фильме"} />
+                    {data.description}
+                </div>
+            </div>
+
+            <div></div>
         </>
     );
 };

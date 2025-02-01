@@ -6,7 +6,7 @@ import { Film, Genre } from '../../@types';
 type Initial = {
     loading: boolean;
     error: string | null;
-    data: Partial<Film>;
+    data: Film;
 }
 
 const initialState: Initial = {
@@ -47,6 +47,7 @@ const initialState: Initial = {
         productionStatus: null,
         type: 'FILM',
         ratingMpaa: null,
+        countries: [],
         ratingAgeLimits: null,
         hasImax: null,
         has3D: null,

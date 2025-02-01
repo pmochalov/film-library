@@ -2,7 +2,7 @@ export type Film = {
     kinopoiskId: number;
     kinopoiskHDId: string | null;
     imdbId: string | null;
-    nameRu: string | null;
+    nameRu: string | null | "333";
     nameEn: string | null;
     nameOriginal: string,
     posterUrl: string;
