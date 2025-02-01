@@ -6,9 +6,7 @@ type H1Props = {
 
 const H1: React.FC<H1Props> = ({ title }) => {
     return (
-        <h1 className='text-2xl font-semibold md:text-3xl lg:text-6xl'>
-            {title}
-        </h1>
+        <h1 className='text-2xl font-bold md:text-3xl lg:text-6xl'>{title}</h1>
     );
 };
 
