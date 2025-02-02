@@ -34,13 +34,18 @@ const Facts: React.FC<FactsProps> = ({ kinopoiskId }) => {
     }
 
     return (
-        <div>
-            <div className='grid grid-cols-1 gap-4'>
-                {data.items &&
-                    data.items.map((item, index) => {
-                        return <div key={index}>{item.text}</div>;
-                    })}
-            </div>
+        <div className='grid grid-cols-1 gap-2 md:gap-3'>
+            {data.items &&
+                data.items.map((item, index) => {
+                    return (
+                        <div
+                            className='p-4 md:px-8 md:py-8 bg-slate-100'
+                            key={index}
+                        >
+                            {item.text}
+                        </div>
+                    );
+                })}
         </div>
     );
 };

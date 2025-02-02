@@ -3,6 +3,7 @@ import * as React from "react";
 import { RootState } from "../../app/store";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { fetchVideos, resetVideoState } from "../../features/videosSlice";
+import { H2 } from "../../UI/H2";
 
 type VideosProps = {
     kinopoiskId: number;
@@ -34,13 +35,23 @@ const Videos: React.FC<VideosProps> = ({ kinopoiskId }) => {
     }
 
     return (
-        <div>
-            <div className='grid grid-cols-1 gap-4'>
-                {data.items &&
-                    data.items.map((item, index) => {
-                        return <div key={index}>{item.url}</div>;
-                    })}
-            </div>
+        <div className='grid grid-cols-1 gap-2 md:gap-3'>
+            {data.items &&
+                data.items.map((item, index) => {
+                    return (
+                        <div
+                            className='p-4 md:px-8 md:py-5 bg-slate-100'
+                            key={index}
+                        >
+                            <h3 className='font-semibold'>{item.name}</h3>
+                            <div>
+                                <a href={`${item.url}`} target='_blank'>
+                                    {item.url}
+                                </a>
+                            </div>
+                        </div>
+                    );
+                })}
         </div>
     );
 };

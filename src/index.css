@@ -3,13 +3,19 @@
 @tailwind utilities;
 
 @layer base {
+
+    html,
     body {
-        @apply bg-gray-900;
+        @apply w-full h-full;
+    }
+
+    body {
+        @apply min-h-full bg-gray-900;
     }
 
     a,
     a:visited {
-        @apply text-blue-600
+        @apply text-blue-600;
     }
 
     a:hover {

@@ -7,7 +7,7 @@ import { Outlet } from "react-router-dom";
 
 function Layout() {
     return (
-        <>
+        <div className='grid grid-cols-1 grid-rows-[auto_1fr_auto] max-h-full'>
             <Header />
 
             <div className='container mx-auto bg-white'>
@@ -25,7 +25,7 @@ function Layout() {
             </div>
 
             <Footer />
-        </>
+        </div>
     );
 }
 

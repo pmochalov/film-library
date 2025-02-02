@@ -3,7 +3,9 @@
 @tailwind utilities;
 
 
+
 #root {
   /* max-width: 1280px; */
-  /* background-color: bisque; */
+  min-height: 100%;
+  height: 100%;
 }
