@@ -5,7 +5,11 @@ type H2Props = {
 };
 
 const H2: React.FC<H2Props> = ({ title }) => {
-    return <h2 className='text-2xl md:text-3xl lg:text-4xl'>{title}</h2>;
+    return (
+        <h2 className='text-xl font-semibold md:text-2xl lg:text-3xl'>
+            {title}
+        </h2>
+    );
 };
 
 export { H2 };

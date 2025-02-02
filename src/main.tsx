@@ -9,7 +9,7 @@ import {
     Route,
     createRoutesFromElements,
 } from "react-router-dom";
-import { Film } from "./pages/Film.tsx";
+import { Film } from "./pages/Film/Film.tsx";
 
 import { store } from "./app/store.ts";
 

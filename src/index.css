@@ -4,7 +4,16 @@
 
 @layer base {
     body {
-        @apply bg-slate-500
+        @apply bg-gray-900;
+    }
+
+    a,
+    a:visited {
+        @apply text-blue-600
+    }
+
+    a:hover {
+        @apply text-red-700;
     }
 }
 
@@ -19,4 +28,5 @@
     .nav-item {
         @apply p-3 bg-slate-400;
     }
+
 }
