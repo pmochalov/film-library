@@ -9,7 +9,11 @@ const Slogan: React.FC<SloganProps> = ({ text }) => {
         return <></>;
     }
 
-    return <div className='text-lg text-gray-500'>{text}</div>;
+    return (
+        <div className='text-lg font-semibold text-gray-500 md:text-xl lg:text-2xl'>
+            {text}
+        </div>
+    );
 };
 
 export { Slogan };

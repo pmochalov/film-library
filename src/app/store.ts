@@ -1,13 +1,18 @@
-import { configureStore } from '@reduxjs/toolkit'
-import filmReducer from '../features/film/filmSlice'
+import { configureStore } from '@reduxjs/toolkit';
+import filmReducer from '../features/filmSlice';
+import galleryReducer from '../features/gallerySlice';
+import factsReducer from '../features/factsSlice';
+import videosReducer from '../features/videosSlice';
 
 export const store = configureStore({
     reducer: {
         film: filmReducer,
+        gallery: galleryReducer,
+        facts: factsReducer,
+        videos: videosReducer,
     },
-})
+});
 
-// Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>
-// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+
 export type AppDispatch = typeof store.dispatch

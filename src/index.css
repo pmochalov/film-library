@@ -15,6 +15,7 @@
     a:hover {
         @apply text-red-700;
     }
+
 }
 
 @layer components {

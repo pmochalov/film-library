@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 // import type { PayloadAction } from '@reduxjs/toolkit'
 import axios from 'axios';
-import { Film, Genre } from '../../@types';
+import { Film, Genre } from '../@types';
 
 type Initial = {
     loading: boolean;
@@ -62,7 +62,7 @@ const initialState: Initial = {
 };
 
 
-export const fetchFilm = createAsyncThunk<Film, { id: string }, {}>(
+export const fetchFilm = createAsyncThunk<Film, { id: number }, {}>(
     'film/fetchFilm',
     async ({ id }) => {
         const response = await axios.post(`${import.meta.env.VITE_API_URL}films/${id}`, {
@@ -70,7 +70,7 @@ export const fetchFilm = createAsyncThunk<Film, { id: string }, {}>(
         });
 
         if (response.status !== 200) {
-            throw new Error("Не удалось получить расписание.");
+            throw new Error("Не удалось получить фильм.");
         }
 
         const data: Film = response.data;

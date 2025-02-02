@@ -1,17 +1,46 @@
 import * as React from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 import { RootState } from "../../app/store";
-import { fetchFilm, resetFilmState } from "../../features/film/filmSlice";
+import { fetchFilm, resetFilmState } from "../../features/filmSlice";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { H1 } from "../../UI/H1";
 import { H2 } from "../../UI/H2";
 import { Genres } from "./Genres";
 import { Slogan } from "./Slogan";
 import { Description } from "./Description";
+import { RatingBadge } from "./RatingBadge";
+import { About } from "./About";
+import { Gallery } from "../Gallery/Gallery";
+import { FilmMenu } from "./FilmMenu";
+import { Facts } from "../Facts/Facts";
+import { Videos } from "../Videos/Videos";
+
+const menuData = [
+    {
+        hash: "",
+        title: "Описание",
+    },
+    {
+        hash: "#videos",
+        title: "Трейлеры",
+    },
+    {
+        hash: "#images",
+        title: "Фото",
+    },
+    {
+        hash: "#facts",
+        title: "Факты",
+    },
+];
 
 const Film: React.FC = () => {
     const { filmId } = useParams<string>();
+
+    const { hash } = useLocation();
+
+    console.log(hash);
 
     const dispatch = useAppDispatch();
 
@@ -21,7 +50,7 @@ const Film: React.FC = () => {
 
     React.useEffect(() => {
         if (filmId) {
-            dispatch(fetchFilm({ id: filmId }));
+            dispatch(fetchFilm({ id: +filmId }));
         }
 
         return () => {
@@ -54,9 +83,7 @@ const Film: React.FC = () => {
                             }`}
                         />
                         <div>
-                            <span className='px-2 py-1 text-xl font-bold bg-orange-400 md:text-2xl lg:text-4xl'>
-                                {data.ratingKinopoisk}
-                            </span>
+                            <RatingBadge value={data.ratingKinopoisk} />
                         </div>
                     </div>
 
@@ -66,47 +93,23 @@ const Film: React.FC = () => {
 
                     <Description text={data.description} />
 
-                    <H2 title={"Описание"} />
+                    <FilmMenu hash={hash} />
 
-                    <div className='flex flex-col gap-3'>
-                        <AboutItem title='Год' desc={data.year} />
-                        <AboutItem
-                            title='Рейтинг на Кинопоиске'
-                            desc={data.ratingKinopoisk}
-                        />
-                        <AboutItem
-                            title='Рейтинг MPAA'
-                            desc={data.ratingMpaa}
-                        />
-                        <AboutItem
-                            title='Возраст'
-                            desc={data.ratingAgeLimits}
-                        />
-                        <AboutItem
-                            title='Время'
-                            desc={`${data.filmLength} мин`}
-                        />
-                    </div>
+                    {hash === "" && <About data={data} />}
 
-                    <div className=''>
-                        <a href={data.webUrl}>{data.webUrl}</a>
-                    </div>
+                    {hash === "#videos" && (
+                        <Videos kinopoiskId={data.kinopoiskId} />
+                    )}
+
+                    {hash === "#images" && (
+                        <Gallery kinopoiskId={data.kinopoiskId} />
+                    )}
+
+                    {hash === "#facts" && (
+                        <Facts kinopoiskId={data.kinopoiskId} />
+                    )}
                 </div>
             </div>
-        </div>
-    );
-};
-
-type AboutItemProps = {
-    title: string;
-    desc: number | string | null;
-};
-
-const AboutItem: React.FC<AboutItemProps> = ({ title, desc }) => {
-    return (
-        <div className='grid grid-cols-1 md:grid-cols-[320px_1fr]'>
-            <div className='text-sm text-gray-500'>{title}</div>
-            <div>{desc ?? "-"}</div>
         </div>
     );
 };

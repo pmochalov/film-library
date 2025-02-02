@@ -57,3 +57,7 @@ export type Country = {
 export type Genre = {
     genre: string
 }
+
+
+// изображения связанные с фильмом
+
