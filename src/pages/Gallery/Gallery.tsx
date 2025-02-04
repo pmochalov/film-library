@@ -3,6 +3,8 @@ import * as React from "react";
 import { RootState } from "../../app/store";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { fetchGallery, resetGalleryState } from "./model/gallerySlice";
+import { ErrorMessage } from "../../widgets/ui/ErrorMessage";
+import { Spinner } from "../../widgets/ui/Spinner";
 
 type GalleryProps = {
     kinopoiskId: number;
@@ -26,11 +28,11 @@ const Gallery: React.FC<GalleryProps> = ({ kinopoiskId }) => {
     }, [dispatch, kinopoiskId]);
 
     if (error) {
-        return <div>Ошибка: {error}</div>;
+        return <ErrorMessage error={error} />;
     }
 
     if (loading) {
-        return <>Загрузка...</>;
+        return <Spinner />;
     }
 
     return (

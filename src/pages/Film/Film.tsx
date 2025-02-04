@@ -14,6 +14,8 @@ import { Gallery } from "../Gallery/Gallery";
 import { FilmMenu } from "./FilmMenu";
 import { Facts } from "../Facts/Facts";
 import { Videos } from "../Videos/Videos";
+import { ErrorMessage } from "../../widgets/ui/ErrorMessage";
+import { Spinner } from "../../widgets/ui/Spinner";
 
 const Film: React.FC = () => {
     const { filmId } = useParams<string>();
@@ -39,11 +41,11 @@ const Film: React.FC = () => {
     }, [dispatch, filmId]);
 
     if (error) {
-        return <div>Ошибка: {error}</div>;
+        return <ErrorMessage error={error} />;
     }
 
     if (loading) {
-        return <>Загрузка...</>;
+        return <Spinner />;
     }
 
     return (

@@ -3,6 +3,8 @@ import * as React from "react";
 import { RootState } from "../../app/store";
 import { useAppDispatch, useAppSelector } from "../../hooks";
 import { fetchVideos, resetVideoState } from "./model/videosSlice";
+import { ErrorMessage } from "../../widgets/ui/ErrorMessage";
+import { Spinner } from "../../widgets/ui/Spinner";
 
 type VideosProps = {
     kinopoiskId: number;
@@ -26,11 +28,11 @@ const Videos: React.FC<VideosProps> = ({ kinopoiskId }) => {
     }, [dispatch, kinopoiskId]);
 
     if (error) {
-        return <div>Ошибка: {error}</div>;
+        return <ErrorMessage error={error} />;
     }
 
     if (loading) {
-        return <>Загрузка...</>;
+        return <Spinner />;
     }
 
     return (

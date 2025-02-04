@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../hooks";
 import { fetchFacts, resetFactsState } from "./model/factsSlice";
 import { Spinner } from "../../widgets/ui/Spinner";
 import { ErrorMessage } from "../../widgets/ui/ErrorMessage";
+import { FactsItem } from "./FactsItem";
 
 type FactsProps = {
     kinopoiskId: number;
@@ -36,17 +37,10 @@ const Facts: React.FC<FactsProps> = ({ kinopoiskId }) => {
     }
 
     return (
-        <div className='grid grid-cols-1 gap-2 md:gap-3'>
+        <div className='grid grid-cols-1 gap-1 md:gap-2'>
             {data.items &&
                 data.items.map((item, index) => {
-                    return (
-                        <div
-                            className='p-4 md:px-8 md:py-8 bg-slate-100'
-                            key={index}
-                        >
-                            {item.text}
-                        </div>
-                    );
+                    return <FactsItem key={index} text={item.text} />;
                 })}
         </div>
     );
