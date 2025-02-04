@@ -18,6 +18,10 @@ const data = [
         hash: "#facts",
         title: "Факты",
     },
+    {
+        hash: "#external_sources",
+        title: "Где смотреть",
+    },
 ];
 
 type FilmMenuProps = {

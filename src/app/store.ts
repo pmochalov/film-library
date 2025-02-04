@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import filmReducer from '../features/filmSlice';
-import galleryReducer from '../features/gallerySlice';
-import factsReducer from '../features/factsSlice';
-import videosReducer from '../features/videosSlice';
+import filmReducer from '../pages/Film/model/filmSlice';
+import galleryReducer from '../pages/Gallery/model/gallerySlice';
+import factsReducer from '../pages/Facts/model/factsSlice';
+import videosReducer from '../pages/Videos/model/videosSlice';
 
 export const store = configureStore({
     reducer: {

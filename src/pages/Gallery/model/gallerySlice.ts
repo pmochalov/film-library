@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 // import type { PayloadAction } from '@reduxjs/toolkit'
 import axios from 'axios';
-import { Gallery } from '../@types/Gallery';
+import { Gallery } from '../../../@types/Gallery';
 
 type Initial = {
     loading: boolean;

@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { RootState } from "../../app/store";
 import { useAppDispatch, useAppSelector } from "../../hooks";
-import { fetchGallery, resetGalleryState } from "../../features/gallerySlice";
+import { fetchGallery, resetGalleryState } from "./model/gallerySlice";
 
 type GalleryProps = {
     kinopoiskId: number;

@@ -2,10 +2,9 @@ import * as React from "react";
 import { useLocation, useParams } from "react-router-dom";
 
 import { RootState } from "../../app/store";
-import { fetchFilm, resetFilmState } from "../../features/filmSlice";
+import { fetchFilm, resetFilmState } from "./model/filmSlice";
 import { useAppDispatch, useAppSelector } from "../../hooks";
-import { H1 } from "../../UI/H1";
-import { H2 } from "../../UI/H2";
+import { H1 } from "../../shared/ui/H1";
 import { Genres } from "./Genres";
 import { Slogan } from "./Slogan";
 import { Description } from "./Description";
@@ -16,31 +15,12 @@ import { FilmMenu } from "./FilmMenu";
 import { Facts } from "../Facts/Facts";
 import { Videos } from "../Videos/Videos";
 
-const menuData = [
-    {
-        hash: "",
-        title: "Описание",
-    },
-    {
-        hash: "#videos",
-        title: "Трейлеры",
-    },
-    {
-        hash: "#images",
-        title: "Фото",
-    },
-    {
-        hash: "#facts",
-        title: "Факты",
-    },
-];
-
 const Film: React.FC = () => {
     const { filmId } = useParams<string>();
 
     const { hash } = useLocation();
 
-    console.log(hash);
+    // console.log(hash);
 
     const dispatch = useAppDispatch();
 
@@ -108,6 +88,8 @@ const Film: React.FC = () => {
                     {hash === "#facts" && (
                         <Facts kinopoiskId={data.kinopoiskId} />
                     )}
+
+                    {hash === "#external_sources" && <>dasds</>}
                 </div>
             </div>
         </div>

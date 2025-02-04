@@ -1,13 +1,13 @@
 // import * as React from "react";
 
-import "./Layout.css";
+// import "./Layout.css";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 import { Outlet } from "react-router-dom";
 
 function Layout() {
     return (
-        <div className='grid grid-cols-1 grid-rows-[auto_1fr_auto] max-h-full'>
+        <div className='grid grid-cols-1 grid-template-rows-[auto_1fr_auto] min-h-full'>
             <Header />
 
             <div className='container mx-auto bg-white'>

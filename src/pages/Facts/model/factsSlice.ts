@@ -1,7 +1,7 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 // import type { PayloadAction } from '@reduxjs/toolkit'
 import axios from 'axios';
-import { Facts } from '../@types/Facts';
+import { Facts } from '../../../@types/Facts';
 
 type Initial = {
     loading: boolean;
@@ -22,7 +22,7 @@ const initialState: Initial = {
 export const fetchFacts = createAsyncThunk<Facts, { id: number }, {}>(
     'facts/fetchFacts',
     async ({ id }) => {
-        const response = await axios.post(`${import.meta.env.VITE_API_URL}films/${id}/facts`, {
+        const response = await axios.post(`${import.meta.env.VITE_API_URL}films/${id}/facts2`, {
             id: id
         });
 

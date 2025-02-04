@@ -2,7 +2,9 @@ import * as React from "react";
 
 import { RootState } from "../../app/store";
 import { useAppDispatch, useAppSelector } from "../../hooks";
-import { fetchFacts, resetFactsState } from "../../features/factsSlice";
+import { fetchFacts, resetFactsState } from "./model/factsSlice";
+import { Spinner } from "../../widgets/ui/Spinner";
+import { ErrorMessage } from "../../widgets/ui/ErrorMessage";
 
 type FactsProps = {
     kinopoiskId: number;
@@ -26,11 +28,11 @@ const Facts: React.FC<FactsProps> = ({ kinopoiskId }) => {
     }, [dispatch, kinopoiskId]);
 
     if (error) {
-        return <div>Ошибка: {error}</div>;
+        return <ErrorMessage error={error} />;
     }
 
     if (loading) {
-        return <>Загрузка...</>;
+        return <Spinner />;
     }
 
     return (

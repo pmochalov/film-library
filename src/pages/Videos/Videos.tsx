@@ -2,8 +2,7 @@ import * as React from "react";
 
 import { RootState } from "../../app/store";
 import { useAppDispatch, useAppSelector } from "../../hooks";
-import { fetchVideos, resetVideoState } from "../../features/videosSlice";
-import { H2 } from "../../UI/H2";
+import { fetchVideos, resetVideoState } from "./model/videosSlice";
 
 type VideosProps = {
     kinopoiskId: number;
