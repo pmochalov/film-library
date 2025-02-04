@@ -1,39 +1,27 @@
 import * as React from "react";
 
-import { RootState } from "../../app/store";
-import { useAppDispatch, useAppSelector } from "../../hooks";
-import { fetchFacts, resetFactsState } from "./model/factsSlice";
-import { Spinner } from "../../widgets/ui/Spinner";
-import { ErrorMessage } from "../../widgets/ui/ErrorMessage";
 import { FactsItem } from "./FactsItem";
+import { Spinner } from "../../widgets/ui/Spinner";
+
+import { useGetFactsQuery } from "./api/FactsApi";
 
 type FactsProps = {
     kinopoiskId: number;
 };
 
 const Facts: React.FC<FactsProps> = ({ kinopoiskId }) => {
-    const dispatch = useAppDispatch();
-
-    const { data, loading, error } = useAppSelector(
-        (state: RootState) => state.facts
-    );
-
-    React.useEffect(() => {
-        if (kinopoiskId) {
-            dispatch(fetchFacts({ id: kinopoiskId }));
-        }
-
-        return () => {
-            dispatch(resetFactsState());
-        };
-    }, [dispatch, kinopoiskId]);
+    const { data, error, isLoading } = useGetFactsQuery(kinopoiskId);
 
     if (error) {
-        return <ErrorMessage error={error} />;
+        // return <ErrorMessage error={error} />;
     }
 
-    if (loading) {
+    if (isLoading) {
         return <Spinner />;
+    }
+
+    if (!data) {
+        return <>Загрузка...</>;
     }
 
     return (

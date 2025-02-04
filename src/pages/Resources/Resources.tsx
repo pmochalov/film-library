@@ -1,10 +1,8 @@
 import * as React from "react";
 
-import { RootState } from "../../app/store";
-import { useAppDispatch, useAppSelector } from "../../hooks";
-import { fetchResources, resetResourcesState } from "./model/resourcesSlice";
+import { useGetResourcesQuery } from "./api/ResourcesApi";
+
 import { Spinner } from "../../widgets/ui/Spinner";
-import { ErrorMessage } from "../../widgets/ui/ErrorMessage";
 import { ResourcesItem } from "./ResourcesItem";
 
 type ResourcesProps = {
@@ -12,28 +10,18 @@ type ResourcesProps = {
 };
 
 const Resources: React.FC<ResourcesProps> = ({ kinopoiskId }) => {
-    const dispatch = useAppDispatch();
-
-    const { data, loading, error } = useAppSelector(
-        (state: RootState) => state.resources
-    );
-
-    React.useEffect(() => {
-        if (kinopoiskId) {
-            dispatch(fetchResources({ id: kinopoiskId }));
-        }
-
-        return () => {
-            dispatch(resetResourcesState());
-        };
-    }, [dispatch, kinopoiskId]);
+    const { data, error, isLoading } = useGetResourcesQuery(kinopoiskId);
 
     if (error) {
-        return <ErrorMessage error={error} />;
+        // return <ErrorMessage error={error} />;
     }
 
-    if (loading) {
+    if (isLoading) {
         return <Spinner />;
+    }
+
+    if (!data) {
+        return <>Загрузка...</>;
     }
 
     return (

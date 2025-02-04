@@ -1,9 +1,8 @@
 import * as React from "react";
 import { useLocation, useParams } from "react-router-dom";
 
-import { RootState } from "../../app/store";
-import { fetchFilm, resetFilmState } from "./model/filmSlice";
-import { useAppDispatch, useAppSelector } from "../../hooks";
+import { useGetFilmQuery } from "./api/FilmApi";
+
 import { H1 } from "../../shared/ui/H1";
 import { Genres } from "./Genres";
 import { Slogan } from "./Slogan";
@@ -14,39 +13,36 @@ import { Gallery } from "../Gallery/Gallery";
 import { FilmMenu } from "./FilmMenu";
 import { Facts } from "../Facts/Facts";
 import { Videos } from "../Videos/Videos";
-import { ErrorMessage } from "../../widgets/ui/ErrorMessage";
-import { Spinner } from "../../widgets/ui/Spinner";
 import { Resources } from "../Resources/Resources";
+import { Spinner } from "../../widgets/ui/Spinner";
+
+type FilmParams = {
+    filmId?: string;
+};
 
 const Film: React.FC = () => {
-    const { filmId } = useParams<string>();
+    const { filmId } = useParams<FilmParams>();
 
     const { hash } = useLocation();
 
-    // console.log(hash);
+    const { data, error, isLoading } = useGetFilmQuery(filmId ?? "");
 
-    const dispatch = useAppDispatch();
-
-    const { data, loading, error } = useAppSelector(
-        (state: RootState) => state.film
-    );
-
-    React.useEffect(() => {
-        if (filmId) {
-            dispatch(fetchFilm({ id: +filmId }));
-        }
-
-        return () => {
-            dispatch(resetFilmState());
-        };
-    }, [dispatch, filmId]);
+    // React.useEffect(() => {
+    //     return () => {
+    //         dispatch(filmApi.util.resetApiState());
+    //     };
+    // }, [dispatch]);
 
     if (error) {
-        return <ErrorMessage error={error} />;
+        // return <ErrorMessage error={error} />;
     }
 
-    if (loading) {
+    if (isLoading) {
         return <Spinner />;
+    }
+
+    if (!data) {
+        return <>Загрузка...</>;
     }
 
     return (

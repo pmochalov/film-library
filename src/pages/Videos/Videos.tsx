@@ -1,38 +1,25 @@
 import * as React from "react";
 
-import { RootState } from "../../app/store";
-import { useAppDispatch, useAppSelector } from "../../hooks";
-import { fetchVideos, resetVideoState } from "./model/videosSlice";
-import { ErrorMessage } from "../../widgets/ui/ErrorMessage";
 import { Spinner } from "../../widgets/ui/Spinner";
+import { useGetVideosQuery } from "./api/VideosApi";
 
 type VideosProps = {
     kinopoiskId: number;
 };
 
 const Videos: React.FC<VideosProps> = ({ kinopoiskId }) => {
-    const dispatch = useAppDispatch();
-
-    const { data, loading, error } = useAppSelector(
-        (state: RootState) => state.videos
-    );
-
-    React.useEffect(() => {
-        if (kinopoiskId) {
-            dispatch(fetchVideos({ id: kinopoiskId }));
-        }
-
-        return () => {
-            dispatch(resetVideoState());
-        };
-    }, [dispatch, kinopoiskId]);
+    const { data, error, isLoading } = useGetVideosQuery(kinopoiskId);
 
     if (error) {
-        return <ErrorMessage error={error} />;
+        // return <ErrorMessage error={error} />;
     }
 
-    if (loading) {
+    if (isLoading) {
         return <Spinner />;
+    }
+
+    if (!data) {
+        return <>Загрузка...</>;
     }
 
     return (

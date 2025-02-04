@@ -1,38 +1,26 @@
 import * as React from "react";
 
-import { RootState } from "../../app/store";
-import { useAppDispatch, useAppSelector } from "../../hooks";
-import { fetchGallery, resetGalleryState } from "./model/gallerySlice";
-import { ErrorMessage } from "../../widgets/ui/ErrorMessage";
 import { Spinner } from "../../widgets/ui/Spinner";
+
+import { useGetGalleryQuery } from "./api/GalleryApi";
 
 type GalleryProps = {
     kinopoiskId: number;
 };
 
 const Gallery: React.FC<GalleryProps> = ({ kinopoiskId }) => {
-    const dispatch = useAppDispatch();
-
-    const { data, loading, error } = useAppSelector(
-        (state: RootState) => state.gallery
-    );
-
-    React.useEffect(() => {
-        if (kinopoiskId) {
-            dispatch(fetchGallery({ id: kinopoiskId }));
-        }
-
-        return () => {
-            dispatch(resetGalleryState());
-        };
-    }, [dispatch, kinopoiskId]);
+    const { data, error, isLoading } = useGetGalleryQuery(kinopoiskId);
 
     if (error) {
-        return <ErrorMessage error={error} />;
+        // return <ErrorMessage error={error} />;
     }
 
-    if (loading) {
+    if (isLoading) {
         return <Spinner />;
+    }
+
+    if (!data) {
+        return <>Загрузка...</>;
     }
 
     return (
