@@ -3,6 +3,7 @@ import filmReducer from '../pages/Film/model/filmSlice';
 import galleryReducer from '../pages/Gallery/model/gallerySlice';
 import factsReducer from '../pages/Facts/model/factsSlice';
 import videosReducer from '../pages/Videos/model/videosSlice';
+import resourcesReducer from '../pages/Resources/model/resourcesSlice';
 
 export const store = configureStore({
     reducer: {
@@ -10,6 +11,7 @@ export const store = configureStore({
         gallery: galleryReducer,
         facts: factsReducer,
         videos: videosReducer,
+        resources: resourcesReducer,
     },
 });
 

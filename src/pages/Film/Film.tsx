@@ -16,6 +16,7 @@ import { Facts } from "../Facts/Facts";
 import { Videos } from "../Videos/Videos";
 import { ErrorMessage } from "../../widgets/ui/ErrorMessage";
 import { Spinner } from "../../widgets/ui/Spinner";
+import { Resources } from "../Resources/Resources";
 
 const Film: React.FC = () => {
     const { filmId } = useParams<string>();
@@ -91,7 +92,9 @@ const Film: React.FC = () => {
                         <Facts kinopoiskId={data.kinopoiskId} />
                     )}
 
-                    {hash === "#external_sources" && <>dasds</>}
+                    {hash === "#external_sources" && (
+                        <Resources kinopoiskId={data.kinopoiskId} />
+                    )}
                 </div>
             </div>
         </div>
