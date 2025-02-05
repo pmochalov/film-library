@@ -14,12 +14,15 @@ import { store } from "./app/store.ts";
 import { Provider } from "react-redux";
 import Layout from "./widgets/ui/Layout.tsx";
 import { ErrorPage } from "./pages/Error/Error.tsx";
+import { Home } from "./pages/Home/Home.tsx";
+import { Collections } from "./pages/Collections/Collections.tsx";
 
 const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path='/' element={<Layout />} errorElement={<ErrorPage />}>
-            <Route index element={<>dasd</>} />
+            <Route index element={<Home />} />
             <Route path='film/:filmId' element={<Film />} />
+            <Route path='collection' element={<Collections />} />
         </Route>
     ),
     {

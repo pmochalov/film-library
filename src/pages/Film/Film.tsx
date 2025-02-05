@@ -27,12 +27,6 @@ const Film: React.FC = () => {
 
     const { data, error, isLoading } = useGetFilmQuery(filmId ?? "");
 
-    // React.useEffect(() => {
-    //     return () => {
-    //         dispatch(filmApi.util.resetApiState());
-    //     };
-    // }, [dispatch]);
-
     if (error) {
         // return <ErrorMessage error={error} />;
     }
