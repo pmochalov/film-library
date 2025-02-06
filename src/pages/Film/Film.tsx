@@ -46,16 +46,11 @@ const Film: React.FC = () => {
                     />
                 </div>
                 <div className='flex flex-col gap-2 md:gap-4 lg:gap-8'>
-                    <div className='flex flex-col md:flex-row md:items-center md:justify-between'>
-                        <H1
-                            title={`${data.nameRu}${
-                                data.year ? ` (${data.year})` : ""
-                            }`}
-                        />
-                        <div>
-                            <RatingBadge value={data.ratingKinopoisk} />
-                        </div>
-                    </div>
+                    <H1
+                        title={`${data.nameRu}${
+                            data.year ? ` (${data.year})` : ""
+                        }`}
+                    />
 
                     <Genres items={data.genres} />
 
