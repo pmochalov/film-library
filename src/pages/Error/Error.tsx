@@ -1,7 +1,4 @@
 import { useRouteError } from "react-router";
-// import * as React from "react";
-
-// import "./Layout.css";
 
 import { H1 } from "../../shared/ui/H1/H1";
 import { Footer } from "../../widgets/ui/Footer";
