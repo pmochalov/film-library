@@ -7,7 +7,7 @@ import { H1 } from "../../shared/ui/H1/H1";
 import { Genres } from "./Genres";
 import { Slogan } from "./Slogan";
 import { Description } from "./Description";
-import { RatingBadge } from "./RatingBadge";
+import { RatingBadge } from "../../shared/ui/RatingBadge/RatingBadge";
 import { About } from "./About";
 import { Gallery } from "../Gallery/Gallery";
 import { FilmMenu } from "./FilmMenu";
@@ -42,6 +42,7 @@ const Film: React.FC = () => {
                     <img
                         src={data.posterUrl}
                         className='w-56 h-auto md:w-auto md:h-auto'
+                        alt={`${data.nameRu}`}
                     />
                 </div>
                 <div className='flex flex-col gap-2 md:gap-4 lg:gap-8'>

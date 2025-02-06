@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Country, Film, Genre } from "../../../@types";
 import { Link } from "react-router-dom";
+import { RatingBadge } from "../RatingBadge/RatingBadge";
 
 type FilmCardProps = {
     film: Film;
@@ -29,9 +30,7 @@ const FilmCard: React.FC<FilmCardProps> = ({ film }) => {
             </div>
             <div className='flex items-start justify-start md:justify-end'>
                 {film.ratingKinopoisk && (
-                    <span className='px-2 py-1 font-bold text-gray-900 bg-orange-400'>
-                        {film.ratingKinopoisk}
-                    </span>
+                    <RatingBadge value={film.ratingKinopoisk} />
                 )}
             </div>
         </Link>

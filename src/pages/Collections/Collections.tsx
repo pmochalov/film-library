@@ -1,9 +1,10 @@
 import * as React from "react";
-
 import { Link, useSearchParams } from "react-router-dom";
-import { H1 } from "../../shared/ui/H1/H1";
-import { menuCollectionData } from "../../data";
+
 import { useGetCollectionQuery } from "./api/CollectionApi";
+import { menuCollectionData } from "../../data";
+
+import { H1 } from "../../shared/ui/H1/H1";
 import { Spinner } from "../../widgets/ui/Spinner";
 import { H3 } from "../../shared/ui/H3/H3";
 import { FilmCard } from "../../shared/ui/FilmCard/FilmCard";
@@ -67,8 +68,8 @@ const Collections: React.FC = () => {
 
     return (
         <div className='grid grid-cols-1 gap-2 md:gap-2'>
-            <div className='grid grid-cols-[1fr_320px] gap-8'>
-                <div>
+            <div className='grid grid-cols-1 lg:grid-cols-[1fr_320px] gap-8'>
+                <div className='flex flex-col order-2 gap-4 lg:order-1'>
                     <div
                         className={`aspect-[2/1] md:aspect-[3/1] ${currCollection.bgColor} flex p-2 md:p-4 items-center justify-start`}
                     >
@@ -77,7 +78,7 @@ const Collections: React.FC = () => {
                     {renderFilmList()}
                 </div>
 
-                <div>
+                <div className='order-1 lg:order-2'>
                     <H3 title={"Рейтинги"} />
                     {renderRatingsMenu()}
                 </div>
