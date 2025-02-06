@@ -3,6 +3,16 @@ import { Country, Film, Genre } from "../../../@types/Film";
 import { Link } from "react-router-dom";
 import { RatingBadge } from "../RatingBadge/RatingBadge";
 
+function getGenrestStr(genres: Genre[]): string {
+    return genres.length > 0 ? genres.map((g) => g.genre).join(", ") : "";
+}
+
+function getCountriesStr(countries: Country[]): string {
+    return countries.length > 0
+        ? countries.map((c) => c.country).join(", ")
+        : "";
+}
+
 type FilmCardProps = {
     film: Film;
 };
@@ -38,13 +48,3 @@ const FilmCard: React.FC<FilmCardProps> = ({ film }) => {
 };
 
 export { FilmCard };
-
-function getGenrestStr(genres: Genre[]): string {
-    return genres.length > 0 ? genres.map((g) => g.genre).join(", ") : "";
-}
-
-function getCountriesStr(countries: Country[]): string {
-    return countries.length > 0
-        ? countries.map((c) => c.country).join(", ")
-        : "";
-}
