@@ -11,7 +11,7 @@ const RatingBadge: React.FC<BadgeProps> = ({ value }) => {
 
     return (
         <span
-            className='px-2 py-1 font-bold text-black bg-orange-400'
+            className='px-2 py-1 font-bold text-black bg-orange-400 rounded-lg'
             aria-label={`Рейтинг: ${value}`}
         >
             {value}

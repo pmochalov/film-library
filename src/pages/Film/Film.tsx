@@ -46,13 +46,12 @@ const Film: React.FC = () => {
                     />
                 </div>
                 <div className='flex flex-col gap-2 md:gap-4 lg:gap-8'>
-                    <H1
-                        title={`${data.nameRu}${
-                            data.year ? ` (${data.year})` : ""
-                        }`}
-                    />
+                    <H1 title={data.nameRu} />
 
-                    <Genres items={data.genres} />
+                    <div className='flex flex-wrap gap-4'>
+                        <Genres items={data.genres} />{" "}
+                        <RatingBadge value={data.ratingKinopoisk} />
+                    </div>
 
                     <Slogan text={data.slogan} />
 

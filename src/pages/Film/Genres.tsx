@@ -13,7 +13,10 @@ const Genres: React.FC<GenresProps> = ({ items }) => {
     return (
         <div className='flex flex-wrap gap-x-2 gap-y-1'>
             {items.map((g, i) => (
-                <span className='px-2 py-1 bg-gray-200 rounded-lg' key={i}>
+                <span
+                    className='px-2 py-1 text-white bg-gray-800 rounded-lg'
+                    key={i}
+                >
                     {g.genre}
                 </span>
             ))}

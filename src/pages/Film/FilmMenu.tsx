@@ -30,12 +30,12 @@ type FilmMenuProps = {
 
 const FilmMenu: React.FC<FilmMenuProps> = ({ hash }) => {
     return (
-        <nav className='flex flex-row gap-3 border-b-2 border-slate-200'>
+        <nav className='flex flex-col gap-2 border-b-2 lg:gap-3 lg:flex-row border-slate-200'>
             {data.map((item, index) => {
                 const itemClass =
                     hash === item.hash
-                        ? "py-3 px-4 bg-slate-200 font-semibold"
-                        : "py-3 px-4";
+                        ? "py-3 px-2 lg:px-4 bg-slate-200 font-semibold"
+                        : "py-3 px-2 lg:px-4";
 
                 return (
                     <Link
