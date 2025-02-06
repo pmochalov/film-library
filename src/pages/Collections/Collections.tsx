@@ -20,7 +20,11 @@ const Collections: React.FC = () => {
         menuCollectionData.find((c) => c.value === type) ??
         menuCollectionData[0];
 
-    const title = <span className={TITLE_STYLES}>{currCollection.title}</span>;
+    const title = (
+        <span className={TITLE_STYLES}>
+            {currCollection.title} {currCollection.emodji}
+        </span>
+    );
 
     const { data, error, isLoading } = useGetCollectionQuery({
         type: currCollection.value,
@@ -31,12 +35,8 @@ const Collections: React.FC = () => {
         // return <ErrorMessage error={error} />;
     }
 
-    if (isLoading) {
+    if (isLoading || !data) {
         return <Spinner />;
-    }
-
-    if (!data) {
-        return <>Загрузка...</>;
     }
 
     const renderFilmList = () => (
@@ -58,7 +58,7 @@ const Collections: React.FC = () => {
                         className={`px-3 py-1 ${isCurrent && "font-semibold"}`}
                         key={item.value}
                     >
-                        {item.title}
+                        {item.title} {isCurrent && `${item.emodji}`}
                     </Link>
                 );
             })}

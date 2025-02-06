@@ -16,7 +16,7 @@ const Logo: React.FC = () => {
     return (
         <Link
             to='/'
-            className='px-3 py-1 text-xl text-white rounded-lg md:text-2xl lg:text-3xl box-decoration-slice bg-gradient-to-r from-indigo-600 to-pink-500 visited:text-white hover:text-black'
+            className='px-3 py-1 text-xl font-semibold text-white rounded-lg md:text-2xl lg:text-3xl box-decoration-slice bg-gradient-to-r from-indigo-600 to-pink-500 visited:text-white hover:text-black'
         >
             Фильмотека
         </Link>

@@ -16,12 +16,8 @@ const Facts: React.FC<FactsProps> = ({ kinopoiskId }) => {
         // return <ErrorMessage error={error} />;
     }
 
-    if (isLoading) {
+    if (isLoading || !data) {
         return <Spinner />;
-    }
-
-    if (!data) {
-        return <>Загрузка...</>;
     }
 
     return (
