@@ -1,7 +1,7 @@
 import * as React from "react";
 
 type H2Props = {
-    title: string | null;
+    title: string | null | React.ReactElement;
 };
 
 const H2: React.FC<H2Props> = ({ title }) => {

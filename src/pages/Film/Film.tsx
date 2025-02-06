@@ -3,7 +3,7 @@ import { useLocation, useParams } from "react-router-dom";
 
 import { useGetFilmQuery } from "./api/FilmApi";
 
-import { H1 } from "../../shared/ui/H1";
+import { H1 } from "../../shared/ui/H1/H1";
 import { Genres } from "./Genres";
 import { Slogan } from "./Slogan";
 import { Description } from "./Description";
