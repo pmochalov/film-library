@@ -1,4 +1,4 @@
-import { Film } from "../@types";
+import { Film } from "./Film";
 
 export type Collections = {
     total: number;

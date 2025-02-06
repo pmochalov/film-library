@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Genre } from "../../@types";
+import { Genre } from "../../@types/Film";
 
 type GenresProps = {
     items: Genre[] | null;

@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Country, Film, Genre } from "../../../@types";
+import { Country, Film, Genre } from "../../../@types/Film";
 import { Link } from "react-router-dom";
 import { RatingBadge } from "../RatingBadge/RatingBadge";
 
