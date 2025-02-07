@@ -5,7 +5,7 @@ export const collectionsApi = createApi({
     reducerPath: 'collectionsApi',
     baseQuery: fetchBaseQuery({ baseUrl: `${import.meta.env.VITE_API_URL}films/` }),
     endpoints: (builder) => ({
-        getCollection: builder.query<Collections, { type: string; page: string }>({
+        getCollection: builder.query<Collections, { type: string; page: number }>({
             query: ({ type, page }) => `collections?type=${type}&page=${page}`
         }),
     }),
