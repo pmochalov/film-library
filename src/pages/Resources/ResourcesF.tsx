@@ -4,29 +4,34 @@ import { useGetResourcesQuery } from "./api/ResourcesApi";
 
 import { Spinner } from "../../widgets/ui/Spinner";
 import { ResourcesItem } from "./ResourcesItem";
+import { Resources } from "../../@types/Resources";
+import { Empty } from "../../shared/ui/Empty/Empty";
 
 type ResourcesProps = {
     kinopoiskId: number;
 };
 
-const Resources: React.FC<ResourcesProps> = ({ kinopoiskId }) => {
-    const { data, error, isLoading } = useGetResourcesQuery(kinopoiskId);
+const ResourcesF: React.FC<ResourcesProps> = ({ kinopoiskId }) => {
+    const { data, error, isLoading } = useGetResourcesQuery(kinopoiskId) as {
+        data: Resources;
+        error: any;
+        isLoading: boolean;
+    };
 
     if (error) {
-        // return <ErrorMessage error={error} />;
+        return <>Ошибка</>;
     }
 
     if (isLoading) {
         return <Spinner />;
     }
 
-    if (!data) {
-        return <>Загрузка...</>;
-    }
-
     return (
         <div className='flex flex-wrap gap-1 md:gap-2'>
-            {data.items &&
+            {data.total === 0 && <Empty />}
+
+            {data.total > 0 &&
+                data.items &&
                 data.items.map((item, index) => {
                     return (
                         <ResourcesItem
@@ -41,4 +46,4 @@ const Resources: React.FC<ResourcesProps> = ({ kinopoiskId }) => {
     );
 };
 
-export { Resources };
+export { ResourcesF };

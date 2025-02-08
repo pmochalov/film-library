@@ -22,7 +22,7 @@ const About: React.FC<AboutProps> = ({ data }) => {
         { title: "Рейтинг на Кинопоиске", desc: data.ratingKinopoisk },
         { title: "Рейтинг MPAA", desc: data.ratingMpaa },
         { title: "Возраст", desc: data.ratingAgeLimits },
-        { title: "Время", desc: `${data.filmLength} мин` },
+        { title: "Время, мин", desc: data.filmLength },
         {
             title: "Кинопоиск URL",
             desc: (
@@ -51,7 +51,7 @@ const AboutItem: React.FC<AboutItemProps> = ({ title, desc }) => {
     return (
         <div className='grid grid-cols-1 md:grid-cols-[320px_1fr]'>
             <div className='text-sm text-gray-500'>{title}</div>
-            <div className='overflow-x-hidden'>{desc ?? "-"}</div>
+            <div className='overflow-x-hidden'>{desc ?? "—"}</div>
         </div>
     );
 };

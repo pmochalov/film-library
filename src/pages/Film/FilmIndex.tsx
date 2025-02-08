@@ -9,29 +9,34 @@ import { Slogan } from "./Slogan";
 import { Description } from "./Description";
 import { RatingBadge } from "../../shared/ui/RatingBadge/RatingBadge";
 import { About } from "./About";
-import { Gallery } from "../Gallery/Gallery";
+import { Images } from "../Images/Images";
 import { FilmMenu } from "./FilmMenu";
 import { Facts } from "../Facts/Facts";
 import { Videos } from "../Videos/Videos";
-import { Resources } from "../Resources/Resources";
+import { ResourcesF } from "../Resources/ResourcesF";
 import { Spinner } from "../../widgets/ui/Spinner";
+import { Film } from "../../@types/Film";
 
 type FilmParams = {
     filmId?: string;
 };
 
-const Film: React.FC = () => {
+const FilmIndex: React.FC = () => {
     const { filmId } = useParams<FilmParams>();
 
     const { hash } = useLocation();
 
-    const { data, error, isLoading } = useGetFilmQuery(filmId ?? "");
+    const { data, error, isLoading } = useGetFilmQuery(filmId ?? "") as {
+        data: Film;
+        error: any;
+        isLoading: boolean;
+    };
 
     if (error) {
-        // return <ErrorMessage error={error} />;
+        return <>Ошибка</>;
     }
 
-    if (isLoading || !data) {
+    if (isLoading) {
         return <Spinner />;
     }
 
@@ -66,7 +71,7 @@ const Film: React.FC = () => {
                     )}
 
                     {hash === "#images" && (
-                        <Gallery kinopoiskId={data.kinopoiskId} />
+                        <Images kinopoiskId={data.kinopoiskId} />
                     )}
 
                     {hash === "#facts" && (
@@ -74,7 +79,7 @@ const Film: React.FC = () => {
                     )}
 
                     {hash === "#external_sources" && (
-                        <Resources kinopoiskId={data.kinopoiskId} />
+                        <ResourcesF kinopoiskId={data.kinopoiskId} />
                     )}
                 </div>
             </div>
@@ -82,4 +87,4 @@ const Film: React.FC = () => {
     );
 };
 
-export { Film };
+export { FilmIndex };

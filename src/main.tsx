@@ -7,7 +7,7 @@ import {
     Route,
     createRoutesFromElements,
 } from "react-router-dom";
-import { Film } from "./pages/Film/Film.tsx";
+import { FilmIndex } from "./pages/Film/FilmIndex.tsx";
 
 import { store } from "./app/store.ts";
 
@@ -21,7 +21,7 @@ const router = createBrowserRouter(
     createRoutesFromElements(
         <Route path='/' element={<Layout />} errorElement={<ErrorPage />}>
             <Route index element={<Home />} />
-            <Route path='film/:filmId' element={<Film />} />
+            <Route path='film/:filmId' element={<FilmIndex />} />
             <Route path='collection' element={<Collections />} />
         </Route>
     ),

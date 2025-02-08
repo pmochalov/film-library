@@ -8,12 +8,14 @@ import { H1 } from "../../shared/ui/H1/H1";
 import { Spinner } from "../../widgets/ui/Spinner";
 import { H3 } from "../../shared/ui/H3/H3";
 import { FilmCard } from "../../shared/ui/FilmCard/FilmCard";
+import { Pagination } from "../../shared/ui/Pagination/Pagination";
 
 const TITLE_STYLES =
     "px-3 py-1 font-semibold leading-snug text-white bg-gray-900 group-hover:text-gray-900 group-hover:bg-white md:py-2 lg:px-4 lg:py-3 box-decoration-clone lg:leading-relaxed";
 
 const Collections: React.FC = () => {
     const [searchParams, setSearchParams] = useSearchParams();
+
     const page = searchParams.get("page")
         ? Number(searchParams.get("page"))
         : 1;
@@ -81,25 +83,13 @@ const Collections: React.FC = () => {
                     >
                         <H1 title={title} />
                     </div>
-
-                    <nav className='flex gap-3'>
-                        <button
-                            onClick={() => handlePageChange(Number(page) - 1)}
-                            className='p-3 text-white bg-black'
-                            disabled={Number(page) === 1}
-                        >
-                            Назад
-                        </button>
-                        <button
-                            onClick={() => handlePageChange(Number(page) + 1)}
-                            className='p-3 text-white bg-black'
-                            disabled={data.totalPages === page}
-                        >
-                            Вперед
-                        </button>
-                    </nav>
-
                     {renderFilmList()}
+                    <Pagination
+                        page={page}
+                        totalPages={data.totalPages}
+                        handlePageChange={handlePageChange}
+                        disabled={isLoading}
+                    />
                 </div>
 
                 <div className='order-1 lg:order-2'>
