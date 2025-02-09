@@ -50,7 +50,7 @@ type AboutItemProps = {
 const AboutItem: React.FC<AboutItemProps> = ({ title, desc }) => {
     return (
         <div className='grid grid-cols-1 md:grid-cols-[320px_1fr]'>
-            <div className='text-sm text-gray-500'>{title}</div>
+            <div className='text-gray-500 '>{title}</div>
             <div className='overflow-x-hidden'>{desc ?? "—"}</div>
         </div>
     );

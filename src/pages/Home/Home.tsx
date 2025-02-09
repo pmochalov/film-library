@@ -6,7 +6,7 @@ type ItemCollectionProps = {
     item: ItemCollection;
 };
 
-const Item: React.FC<ItemCollectionProps> = ({ item }) => {
+const MenuItem: React.FC<ItemCollectionProps> = ({ item }) => {
     return (
         <Link
             to={`/collection/?type=${item.value}`}
@@ -27,7 +27,7 @@ const Home: React.FC = () => {
         <div>
             <nav className='grid grid-cols-1 gap-4 sm:grid-cols-2'>
                 {menuCollectionData.map((item) => (
-                    <Item item={item} />
+                    <MenuItem item={item} />
                 ))}
             </nav>
         </div>
