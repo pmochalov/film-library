@@ -6,7 +6,7 @@ const Header: React.FC = () => {
         <header className='box-border h-20 bg-gray-950'>
             <div className='container flex flex-row items-center justify-between h-20 px-4 mx-auto'>
                 <Logo />
-                <span className='text-white'>Like!</span>
+                <span className='text-white'>My films</span>
             </div>
         </header>
     );
